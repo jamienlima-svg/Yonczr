@@ -1,17 +1,17 @@
-# Imagen base
+# Base image
 FROM ubuntu:22.04
 
-# Instalar dependencias
-RUN apt update && \
-    apt install -y python3 curl wget git && \
-    apt clean
+# Install dependencies
+RUN apt update &&
+ apt install -y python3 curl wget git &&
+ apt clean
 
-# Crear app dummy
+# Create app dummy
 WORKDIR /app
-RUN echo "Servidor Docker en Railway activo" > index.html
+RUN echo "Docker server on Railway active" > index.html
 
-# Exponer un puerto (Railway requiere uno)
+# Expose a port (Railway requires one)
 EXPOSE 8080
 
-# Mantener el contenedor vivo (puedes cambiar por tu app real)
+# Keep container alive (you can change it to your real app)
 CMD ["python3", "-m", "http.server", "8080"]
